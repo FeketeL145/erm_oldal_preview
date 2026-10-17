@@ -1,0 +1,2610 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Electric Racing Miskolc – Miskolci Egyetem Formula Student csapat. Mérnöki innováció, elektromos hajtás, versenyszellem."
+    />
+    <title>Electric Racing Miskolc | Formula Student</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+
+    <!-- Critical Anti-FOUC & Sleek Preloader Styles -->
+    <style id="preloader-critical-css">
+      html, body {
+        background-color: #0b0c10 !important;
+        color: #ffffff;
+      }
+      #page-preloader {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0b0c10;
+        background-image: 
+          radial-gradient(circle at 50% 45%, rgba(41, 170, 225, 0.12) 0%, transparent 65%),
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 100% 100%, 36px 36px, 36px 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      #page-preloader.loaded {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .preloader-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 320px;
+        width: 85%;
+      }
+      .preloader-logo-wrap {
+        position: relative;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .preloader-logo {
+        width: 150px;
+        max-width: 70vw;
+        height: auto;
+        position: relative;
+        z-index: 2;
+        filter: drop-shadow(0 0 18px rgba(41, 170, 225, 0.4));
+        animation: ermPulse 2.2s ease-in-out infinite;
+      }
+      .preloader-glow {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(circle, rgba(41, 170, 225, 0.35) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+        animation: ermGlow 2.2s ease-in-out infinite;
+      }
+      .preloader-track {
+        width: 100%;
+        height: 4px;
+        background: rgba(31, 40, 51, 0.9);
+        border: 1px solid rgba(41, 170, 225, 0.3);
+        transform: skewX(-12deg);
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 0 15px rgba(41, 170, 225, 0.2);
+      }
+      .preloader-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, #29aae1 0%, #60c5f1 50%, #29aae1 100%);
+        box-shadow: 0 0 10px rgba(41, 170, 225, 0.8);
+        animation: ermLoad 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+      }
+      .preloader-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 1.25rem;
+        font-family: 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .preloader-dot {
+        width: 6px;
+        height: 6px;
+        background-color: #29aae1;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #29aae1;
+        animation: ermBlink 1s ease-in-out infinite;
+      }
+      @keyframes ermPulse {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 16px rgba(41, 170, 225, 0.35)); }
+        50% { transform: scale(1.03); filter: drop-shadow(0 0 26px rgba(41, 170, 225, 0.7)); }
+      }
+      @keyframes ermGlow {
+        0%, 100% { transform: scale(0.9); opacity: 0.4; }
+        50% { transform: scale(1.2); opacity: 0.85; }
+      }
+      @keyframes ermLoad {
+        0% { transform: translateX(-100%); }
+        50% { transform: translateX(0%); }
+        100% { transform: translateX(100%); }
+      }
+      @keyframes ermBlink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.3; transform: scale(0.7); }
+      }
+    </style>
+    <script>
+      // Immediate safety fallback so screen is never frozen
+      setTimeout(function() {
+        var p = document.getElementById('page-preloader');
+        if (p && !p.classList.contains('loaded')) {
+          p.classList.add('loaded');
+          setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, 600);
+        }
+      }, 2500);
+    </script>
+  </head>
+
+  <body class="bg-erm-dark text-white font-sans overflow-x-hidden antialiased">
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SLEEK PAGE PRELOADER (Anti-FOUC & Telemetry Animation)    -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div id="page-preloader" aria-hidden="true">
+      <div class="preloader-inner">
+        <div class="preloader-logo-wrap">
+          <img src="/img/logo.png" alt="Electric Racing Miskolc" class="preloader-logo" />
+          <div class="preloader-glow"></div>
+        </div>
+        <div class="preloader-track">
+          <div class="preloader-bar"></div>
+        </div>
+        <div class="preloader-status">
+          <span class="preloader-dot"></span>
+          <span>RENDSZER INICIALIZÁLÁSA</span>
+        </div>
+      </div>
+    </div>
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- NAVBAR                                                      -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 px-6 py-5 lg:px-16 flex justify-between items-center bg-transparent transition-all duration-500"
+    >
+      <!-- Logo -->
+      <a
+        href="#"
+        class="w-36 md:w-48 transition-transform duration-300 hover:scale-105 shrink-0"
+      >
+        <img
+          src="/img/logo.png"
+          alt="Electric Racing Miskolc logo"
+          class="w-full h-auto drop-shadow-lg"
+          loading="eager"
+        />
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden xl:flex gap-8 text-base">
+        <a href="#fs-rol" class="nav-link">Az FS-ről</a>
+        <a href="#auto" class="nav-link">ERMe-01</a>
+        <a href="#csapatunk" class="nav-link">Csapatunk</a>
+        <a href="#gyik" class="nav-link">GYIK</a>
+        <a href="#szponzoraink" class="nav-link">Szponzoraink</a>
+        <a href="#muhely" class="nav-link">Műhely</a>
+      </div>
+
+      <!-- Right Action Area: Language Switcher + CTA -->
+      <div class="hidden md:flex items-center gap-5">
+        <!-- Language Switcher Toggle -->
+        <div class="lang-switcher">
+          <span class="lang-switcher-btn active"
+            ><span class="skew-x-12 block">HU</span></span
+          >
+          <a href="/en/" class="lang-switcher-btn" title="Switch to English"
+            ><span class="skew-x-12 block">EN</span></a
+          >
+        </div>
+
+        <!-- CTA Button (skewed) -->
+        <a
+          href="mailto:sponsor.erm@gmail.com"
+          class="btn-primary text-base py-2.5 px-7 no-underline"
+        >
+          <span class="block skew-x-12">Csatlakozz</span>
+        </a>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <div class="flex items-center gap-3 md:hidden">
+        <!-- Mobile Language Pill -->
+        <div class="lang-switcher sm">
+          <span class="lang-switcher-btn active"
+            ><span class="skew-x-12 block">HU</span></span
+          >
+          <a href="/en/" class="lang-switcher-btn" title="Switch to English"
+            ><span class="skew-x-12 block">EN</span></a
+          >
+        </div>
+
+        <button
+          id="hamburger-btn"
+          class="text-white cursor-pointer p-2"
+          aria-label="Menü megnyitása"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- MOBILE MENU                                                 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div id="mobile-menu" class="mobile-menu">
+      <button
+        id="mobile-close-btn"
+        class="absolute top-6 right-6 text-white cursor-pointer p-2"
+        aria-label="Menü bezárása"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <!-- Language selector inside mobile menu -->
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-4 py-1.5 text-sm font-display font-bold text-erm-dark bg-erm-blue -skew-x-12 shadow-[0_0_15px_rgba(41,170,225,0.6)]"
+        >
+          <span class="skew-x-12 block">Magyar</span>
+        </span>
+        <a
+          href="/en/"
+          class="px-4 py-1.5 text-sm font-display font-bold text-white border border-white/20 -skew-x-12 hover:border-erm-blue transition-colors"
+        >
+          <span class="skew-x-12 block">English</span>
+        </a>
+      </div>
+
+      <a
+        href="#fs-rol"
+        class="font-display text-2xl font-bold uppercase tracking-widest text-white hover:text-erm-blue transition-colors"
+        >Az FS-ről</a
+      >
+      <a
+        href="#auto"
+        class="font-display text-2xl font-bold uppercase tracking-widest text-white hover:text-erm-blue transition-colors"
+        >ERMe-01</a
+      >
+      <a
+        href="#csapatunk"
+        class="font-display text-2xl font-bold uppercase tracking-widest text-white hover:text-erm-blue transition-colors"
+        >Csapatunk</a
+      >
+      <a
+        href="#gyik"
+        class="font-display text-2xl font-bold uppercase tracking-widest text-white hover:text-erm-blue transition-colors"
+        >GYIK</a
+      >
+      <a
+        href="#szponzoraink"
+        class="font-display text-2xl font-bold uppercase tracking-widest text-white hover:text-erm-blue transition-colors"
+        >Szponzoraink</a
+      >
+      <a
+        href="#muhely"
+        class="font-display text-2xl font-bold uppercase tracking-widest text-white hover:text-erm-blue transition-colors"
+        >Műhely</a
+      >
+
+      <div class="mt-4">
+        <a
+          href="mailto:sponsor.erm@gmail.com"
+          class="btn-primary text-lg py-3 px-10 inline-block no-underline"
+        >
+          <span class="block skew-x-12">Csatlakozz</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- HERO SECTION                                                -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section
+      id="hero"
+      class="relative w-full h-screen flex items-center justify-start overflow-hidden"
+    >
+      <!-- Background VIDEO (drone footage, workshop) -->
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="/video/erm-video-compressed.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Very subtle texture overlay on top of video -->
+      <div class="absolute inset-0 z-[1] pointer-events-none">
+        <img
+          src="/img/Eszköz 36.png"
+          alt=""
+          class="w-full h-full object-cover opacity-10 mix-blend-screen"
+          loading="eager"
+          aria-hidden="true"
+        />
+      </div>
+
+      <!-- Lighter dark gradient overlay for text readability without obscuring drone footage -->
+      <div
+        class="absolute inset-0 z-[2] pointer-events-none bg-gradient-to-r from-erm-dark/85 via-erm-dark/40 to-transparent"
+      ></div>
+      <div
+        class="absolute inset-0 z-[2] pointer-events-none bg-gradient-to-t from-erm-dark via-transparent to-erm-dark/30"
+      ></div>
+
+      <!-- Particle canvas -->
+      <canvas
+        id="particle-canvas"
+        class="absolute inset-0 z-[3] pointer-events-none"
+      ></canvas>
+
+      <!-- Decorative diagonal bar (Eszköz 29) -->
+      <div
+        class="absolute top-0 right-0 w-1/2 h-full z-[4] opacity-25 pointer-events-none"
+        data-parallax="-0.1"
+      >
+        <img
+          src="/img/Eszköz 29.png"
+          class="absolute top-0 right-0 h-full object-contain"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Floating particles image (Eszköz 30) -->
+      <img
+        src="/img/Eszköz 30.png"
+        class="absolute bottom-0 right-0 w-[500px] lg:w-[700px] opacity-40 z-[4] pointer-events-none mix-blend-screen"
+        alt=""
+        aria-hidden="true"
+        data-parallax="-0.15"
+        loading="eager"
+      />
+
+      <!-- Hero Content -->
+      <div class="relative z-10 px-6 lg:px-16 max-w-5xl mt-8">
+        <!-- Pre-title -->
+        <h2
+          class="text-erm-blue font-display font-bold tracking-[0.2em] text-sm md:text-base uppercase mb-6 flex items-center gap-4 reveal"
+        >
+          <span class="w-12 md:w-20 h-[2px] bg-erm-blue inline-block"></span>
+          Miskolci Egyetem Formula Student
+        </h2>
+
+        <!-- Main heading -->
+        <h1
+          class="text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-display font-bold uppercase leading-[0.85] mb-8 reveal drop-shadow-lg"
+        >
+          A Jövő<br />
+          <span class="text-gradient">Sebessége</span>
+        </h1>
+
+        <!-- Description -->
+        <p
+          class="text-erm-text text-base md:text-lg lg:text-xl font-sans max-w-2xl mb-12 leading-relaxed reveal drop-shadow"
+        >
+          Mérnöki precizitás, innováció és elektromos hajtás. Mi vagyunk az
+          <span class="text-white font-medium">Electric Racing Miskolc</span>,
+          egy diákcsapat, mely részese a Formula Student bajnokságnak.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-5 reveal">
+          <a
+            href="#auto"
+            class="btn-primary text-base md:text-lg py-3.5 md:py-4 px-8 md:px-12 inline-block no-underline group"
+          >
+            <span class="skew-x-12 flex items-center gap-3">
+              Ismerd meg az autót
+              <svg
+                class="w-5 h-5 group-hover:translate-x-2 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </span>
+          </a>
+          <a
+            href="#szponzoraink"
+            class="btn-secondary text-base md:text-lg py-3.5 md:py-4 px-8 md:px-12 inline-block no-underline"
+          >
+            <span class="skew-x-12">Támogass minket</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom fade -->
+      <div
+        class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-erm-dark to-transparent z-10 pointer-events-none"
+      ></div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-60"
+      >
+        <span
+          class="font-display text-xs tracking-[0.3em] uppercase text-erm-text"
+          >Görgess</span
+        >
+        <div
+          class="w-[1px] h-8 bg-gradient-to-b from-erm-blue to-transparent animate-pulse"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- AZ FS-RŐL (About Formula Student)                           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section
+      id="fs-rol"
+      class="relative py-24 md:py-32 px-6 lg:px-16 overflow-hidden"
+    >
+      <!-- Decorative skewed shape -->
+      <div
+        class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-erm-gray/30 to-transparent -skew-x-12 transform origin-top-right pointer-events-none -z-10"
+      ></div>
+
+      <div class="max-w-7xl mx-auto">
+        <!-- Section header -->
+        <div class="mb-16 md:mb-20 reveal">
+          <h2
+            class="text-erm-blue font-display font-bold tracking-[0.2em] text-sm uppercase mb-4 flex items-center gap-4"
+          >
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+            Az FS-ről
+          </h2>
+          <h3
+            class="text-3xl md:text-5xl lg:text-6xl font-display font-bold uppercase leading-tight"
+          >
+            Tudj meg többet a<br />
+            <span class="text-gradient-blue">Formula Student</span>-ről
+          </h3>
+          <p
+            class="text-erm-text text-base md:text-lg max-w-3xl mt-6 leading-relaxed"
+          >
+            A Formula Student konstruktőri mérnökverseny célja egy olyan formula
+            autó tervezése, kivitelezése és képzeletbeli piacra bocsátása,
+            melyet hallgatói jogviszonnyal rendelkező diákok valósítanak meg és
+            versenyeztetnek nemzetközi színtéren.
+          </p>
+        </div>
+
+        <!-- Two-column: Accordion + Modern Interactive Carousel -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- LEFT: Accordion -->
+          <div class="space-y-3 reveal">
+            <!-- Item 1: A Verseny -->
+            <div class="accordion-item active bg-erm-gray/30 p-5">
+              <button
+                class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+              >
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </span>
+                  <h4
+                    class="font-display font-bold text-lg uppercase tracking-wide"
+                  >
+                    A Verseny
+                  </h4>
+                </div>
+                <svg
+                  class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <p
+                  class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-11"
+                >
+                  Egy Formula Student verseny négy napos, melyből kettő a
+                  technikai és biztonsági szabályoknak megfelelésről szól. Ezek
+                  teljesítésével lehet részt venni a következő két napban a
+                  gyakorlati értelemben vett versenyen. A versenyszámok két
+                  csoportra bonthatók: statikusra és dinamikusra.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 2: Statikus Versenyszámok -->
+            <div class="accordion-item bg-erm-gray/30 p-5">
+              <button
+                class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+              >
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </span>
+                  <h4
+                    class="font-display font-bold text-lg uppercase tracking-wide"
+                  >
+                    Statikus Versenyszámok
+                  </h4>
+                </div>
+                <svg
+                  class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <p
+                  class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-11"
+                >
+                  A Statikus megmérettetés részei a prezentációk, amelyek a
+                  műszaki terv megvédését, egy üzleti terv bemutatását, valamint
+                  egy költségelemzést foglalnak magukban. Ezen versenyszámok az
+                  összpontszámok 40%-át teszik ki.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 3: Dinamikus Versenyszámok -->
+            <div class="accordion-item bg-erm-gray/30 p-5">
+              <button
+                class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+              >
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
+                    </svg>
+                  </span>
+                  <h4
+                    class="font-display font-bold text-lg uppercase tracking-wide"
+                  >
+                    Dinamikus Versenyszámok
+                  </h4>
+                </div>
+                <svg
+                  class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <p
+                  class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-11"
+                >
+                  A Dinamikus versenyszámok közé tartozik a gyorsulás, az ún.
+                  „Skid Pad" amely az autó kanyardinamikáját teszteli egy 8-ast
+                  szimbolizáló pályán, az Autocross, amely egy adott
+                  pályaszakaszon mért időket foglalja magába, végül a
+                  legjelentősebb erőpróba az úgynevezett „Endurance", amelyben
+                  az autó idejét, valamint a fogyasztását mérik egy 22 km-es
+                  zárt körpályán.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 4: Amit Mi Csinálunk -->
+            <div class="accordion-item bg-erm-gray/30 p-5">
+              <button
+                class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+              >
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </span>
+                  <h4
+                    class="font-display font-bold text-lg uppercase tracking-wide"
+                  >
+                    Amit Mi Csinálunk
+                  </h4>
+                </div>
+                <svg
+                  class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <p
+                  class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-11"
+                >
+                  A csapat tagjai mélyreható ismeretet és tapasztalatot
+                  szerezhetnek a járműipar és autósport különböző ágazataiban.
+                  Megtanulhatják az igazi csapatmunka jelentését, valamint
+                  kamatoztathatják elméleti tudásukat a gyakorlatban. A projekt
+                  lehetőséget biztosít a legfejlettebb technológiák
+                  megismerésére és alkalmazására, valamint az ipari cégek
+                  irányába való indirekt csatornaként szolgál a benne szereplő
+                  hallgatók számára.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Interactive Carousel -->
+          <div class="reveal">
+            <div
+              id="fs-carousel"
+              class="relative group/carousel overflow-hidden rounded-sm border border-white/10 bg-erm-gray/40 shadow-2xl"
+            >
+              <!-- Carousel Track -->
+              <div
+                id="fs-carousel-track"
+                class="flex transition-transform duration-500 ease-out will-change-transform"
+              >
+                <!-- Slide 1 -->
+                <div
+                  class="carousel-slide min-w-full relative aspect-video select-none"
+                >
+                  <img
+                    src="/img/feature_img1.webp"
+                    alt="Formula Student Germany"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-erm-dark via-erm-dark/60 to-transparent p-5 flex items-end justify-between"
+                  >
+                    <div>
+                      <span
+                        class="text-xs font-display uppercase tracking-widest text-erm-blue font-bold"
+                        >FS Németország</span
+                      >
+                      <p class="text-sm text-gray-200 font-sans">
+                        Hockenheimring versenypálya
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div
+                  class="carousel-slide min-w-full relative aspect-video select-none"
+                >
+                  <img
+                    src="/img/feature_img2.webp"
+                    alt="FS Czech Republic"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-erm-dark via-erm-dark/60 to-transparent p-5 flex items-end justify-between"
+                  >
+                    <div>
+                      <span
+                        class="text-xs font-display uppercase tracking-widest text-erm-blue font-bold"
+                        >FS Csehország</span
+                      >
+                      <p class="text-sm text-gray-200 font-sans">
+                        Most Autodrom versenypálya
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div
+                  class="carousel-slide min-w-full relative aspect-video select-none"
+                >
+                  <img
+                    src="/img/feature_img3.webp"
+                    alt="Versenypályán"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-erm-dark via-erm-dark/60 to-transparent p-5 flex items-end justify-between"
+                  >
+                    <div>
+                      <span
+                        class="text-xs font-display uppercase tracking-widest text-erm-blue font-bold"
+                        >Versenynapok</span
+                      >
+                      <p class="text-sm text-gray-200 font-sans">
+                        Dinamikus versenyszámok élesben
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div
+                  class="carousel-slide min-w-full relative aspect-video select-none"
+                >
+                  <img
+                    src="/img/feature_img4.webp"
+                    alt="Endurance és Autocross"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-erm-dark via-erm-dark/60 to-transparent p-5 flex items-end justify-between"
+                  >
+                    <div>
+                      <span
+                        class="text-xs font-display uppercase tracking-widest text-erm-blue font-bold"
+                        >Endurance Próba</span
+                      >
+                      <p class="text-sm text-gray-200 font-sans">
+                        22 km-es zárt körverseny
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div
+                  class="carousel-slide min-w-full relative aspect-video select-none"
+                >
+                  <img
+                    src="/img/feature_img5.webp"
+                    alt="Műhely munka"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-erm-dark via-erm-dark/60 to-transparent p-5 flex items-end justify-between"
+                  >
+                    <div>
+                      <span
+                        class="text-xs font-display uppercase tracking-widest text-erm-blue font-bold"
+                        >Nemzetközi versenyzés</span
+                      >
+                      <p class="text-sm text-gray-200 font-sans">
+                        Versenyző csapatok Európa szerte
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div
+                  class="carousel-slide min-w-full relative aspect-video select-none"
+                >
+                  <img
+                    src="/img/feature_img6.webp"
+                    alt="ERM Csapatfotó"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-erm-dark via-erm-dark/60 to-transparent p-5 flex items-end justify-between"
+                  >
+                    <div>
+                      <span
+                        class="text-xs font-display uppercase tracking-widest text-erm-blue font-bold"
+                        >Skid Pad</span
+                      >
+                      <p class="text-sm text-gray-200 font-sans">
+                        Az autó kanyardinamikájának tesztelése
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Top Telemetry Tag & Counter -->
+              <div
+                class="absolute top-3 inset-x-3 flex justify-between items-center pointer-events-none z-10"
+              >
+                <span
+                  class="bg-erm-dark/80 backdrop-blur-md px-3 py-1 font-display text-xs uppercase tracking-widest text-erm-blue border border-erm-blue/30 -skew-x-12"
+                >
+                  <span class="skew-x-12 inline-block">Galéria</span>
+                </span>
+                <span
+                  id="fs-carousel-counter"
+                  class="bg-erm-dark/80 backdrop-blur-md px-3 py-1 font-display text-xs uppercase tracking-widest text-white border border-white/10 -skew-x-12"
+                >
+                  <span class="skew-x-12 inline-block">01 / 06</span>
+                </span>
+              </div>
+
+              <!-- Nav Arrows -->
+              <button
+                id="fs-carousel-prev"
+                class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-erm-dark/80 hover:bg-erm-blue text-white border border-white/10 hover:border-erm-blue flex items-center justify-center transition-all cursor-pointer -skew-x-12 z-20 group"
+                aria-label="Előző kép"
+              >
+                <svg
+                  class="w-5 h-5 skew-x-12 group-hover:-translate-x-0.5 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+              <button
+                id="fs-carousel-next"
+                class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-erm-dark/80 hover:bg-erm-blue text-white border border-white/10 hover:border-erm-blue flex items-center justify-center transition-all cursor-pointer -skew-x-12 z-20 group"
+                aria-label="Következő kép"
+              >
+                <svg
+                  class="w-5 h-5 skew-x-12 group-hover:translate-x-0.5 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+
+              <!-- Corner Accents -->
+              <div
+                class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-erm-blue pointer-events-none"
+              ></div>
+              <div
+                class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-erm-blue pointer-events-none"
+              ></div>
+            </div>
+
+            <!-- Dots / Progress Indicators -->
+            <div
+              id="fs-carousel-dots"
+              class="flex justify-center items-center gap-2 mt-4"
+            >
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DIAGONAL DIVIDER                                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="relative h-24 md:h-32 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-erm-gray/40 -skew-y-2 origin-top-left transform scale-110"
+      ></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- THE CAR (ERMe-01)                                           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section
+      id="auto"
+      class="relative py-24 md:py-32 px-6 lg:px-16 overflow-hidden bg-erm-gray/20"
+    >
+      <!-- Scanline overlay -->
+      <div
+        class="absolute inset-0 scanline pointer-events-none opacity-30"
+      ></div>
+
+      <!-- Decorative grid background -->
+      <div
+        class="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style="
+          background-image:
+            linear-gradient(rgba(41, 170, 225, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(41, 170, 225, 0.3) 1px, transparent 1px);
+          background-size: 60px 60px;
+        "
+      ></div>
+
+      <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Section header -->
+        <div class="text-center mb-16 md:mb-20 reveal">
+          <h2
+            class="text-erm-blue font-display font-bold tracking-[0.2em] text-sm uppercase mb-4 flex items-center justify-center gap-4"
+          >
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+            Az Autónk
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+          </h2>
+          <h3
+            class="text-4xl md:text-5xl lg:text-7xl font-display font-bold leading-tight"
+          >
+            ERM<span class="lowercase">e</span
+            ><span class="text-gradient-blue">-01</span>
+          </h3>
+          <p
+            class="text-erm-text text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed"
+          >
+            A saját gyártású elektromos versenyautónk. Minden gramm, minden
+            watt, minden milliszekundum számít.
+          </p>
+        </div>
+
+        <!-- 3D Model Interactive Telemetry Viewer -->
+        <div class="mb-12 md:mb-16 reveal">
+          <div
+            id="model-viewer-wrapper"
+            class="relative w-full h-[380px] sm:h-[460px] md:h-[560px] lg:h-[620px] bg-gradient-to-b from-erm-gray/40 via-erm-dark/90 to-erm-dark border border-white/10 rounded-sm overflow-hidden shadow-2xl group"
+          >
+            <!-- 3D WebGL Canvas Container -->
+            <div
+              id="model-canvas-container"
+              class="w-full h-full cursor-grab active:cursor-grabbing"
+            ></div>
+
+            <!-- Loading Overlay -->
+            <div
+              id="model-loading-overlay"
+              class="absolute inset-0 z-30 bg-erm-dark/95 flex flex-col items-center justify-center transition-opacity duration-500"
+            >
+              <div class="relative w-16 h-16 mb-4">
+                <div
+                  class="w-16 h-16 rounded-full border-2 border-white/10 border-t-erm-blue animate-spin"
+                ></div>
+                <div
+                  class="absolute inset-2 rounded-full border border-erm-blue/30 border-b-erm-blue animate-spin"
+                  style="animation-direction: reverse; animation-duration: 1.5s"
+                ></div>
+              </div>
+              <p
+                class="font-display font-bold uppercase tracking-widest text-sm text-white mb-2"
+              >
+                ERMe-01 3D Modell Betöltése...
+              </p>
+              <div class="w-48 h-1 bg-white/10 overflow-hidden">
+                <div
+                  id="model-progress-bar"
+                  class="h-full bg-erm-blue w-0 transition-all duration-200"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Top HUD Bar -->
+            <div
+              class="absolute top-0 inset-x-0 p-3 sm:p-4 flex items-center justify-between pointer-events-none z-20 bg-gradient-to-b from-erm-dark/80 to-transparent"
+            >
+              <div class="flex items-center gap-2 sm:gap-3">
+                <span
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-erm-dark/80 border border-erm-blue/30 text-[0.65rem] sm:text-xs font-display font-bold uppercase tracking-wider text-erm-blue -skew-x-12"
+                >
+                  <span
+                    class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block"
+                  ></span>
+                  <span class="skew-x-12 inline-block">ERMe-01 // 3D CAD</span>
+                </span>
+                <span
+                  class="hidden sm:inline-block px-2.5 py-1 bg-erm-dark/60 border border-white/10 text-[0.65rem] font-display uppercase tracking-widest text-erm-text -skew-x-12"
+                >
+                  <span class="skew-x-12 inline-block">Interaktív 360°</span>
+                </span>
+              </div>
+
+              <!-- Interactive Controls (Auto-rotate toggle, Reset view) -->
+              <div class="flex items-center gap-2 pointer-events-auto">
+                <button
+                  id="model-autorotate-btn"
+                  class="px-2.5 py-1 text-[0.65rem] sm:text-xs font-display font-bold uppercase tracking-wider bg-erm-dark/80 hover:bg-erm-blue hover:text-erm-dark text-white border border-white/15 hover:border-erm-blue transition-all -skew-x-12 cursor-pointer shadow-md"
+                  title="Auto-forgatás ki/be"
+                >
+                  <span class="skew-x-12 flex items-center gap-1.5">
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
+                    </svg>
+                    <span id="autorotate-label" class="hidden md:inline"
+                      >Forgatás</span
+                    >
+                  </span>
+                </button>
+                <button
+                  id="model-reset-btn"
+                  class="px-2.5 py-1 text-[0.65rem] sm:text-xs font-display font-bold uppercase tracking-wider bg-erm-dark/80 hover:bg-erm-blue hover:text-erm-dark text-white border border-white/15 hover:border-erm-blue transition-all -skew-x-12 cursor-pointer shadow-md"
+                  title="Alaphelyzet"
+                >
+                  <span class="skew-x-12 flex items-center gap-1.5">
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+                      />
+                    </svg>
+                    <span class="hidden md:inline">Alaphelyzet</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Bottom Hint Overlay -->
+            <div
+              class="absolute bottom-3 inset-x-3 sm:bottom-4 sm:inset-x-4 flex items-center justify-between pointer-events-none z-20"
+            >
+              <div
+                class="px-3 py-1.5 bg-erm-dark/70 backdrop-blur-md border border-white/10 text-[0.65rem] sm:text-xs font-display uppercase tracking-widest text-erm-text flex items-center gap-2 -skew-x-12"
+              >
+                <svg
+                  class="w-3.5 h-3.5 text-erm-blue skew-x-12 shrink-0 animate-pulse"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                  />
+                </svg>
+                <span class="skew-x-12 inline-block"
+                  >Húzd a forgatáshoz • Görgess a zoomoláshoz</span
+                >
+              </div>
+              <div
+                class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-erm-dark/70 backdrop-blur-md border border-white/10 text-[0.65rem] font-display uppercase tracking-widest text-erm-blue -skew-x-12"
+              >
+                <span class="skew-x-12 inline-block">GLB // 60 FPS WebGL</span>
+              </div>
+            </div>
+
+            <!-- HUD telemetry corner brackets -->
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue pointer-events-none z-20"
+            ></div>
+            <div
+              class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-erm-blue pointer-events-none z-20"
+            ></div>
+            <div
+              class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-erm-blue pointer-events-none z-20"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue pointer-events-none z-20"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Telemetry Dashboard Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger"
+        >
+          <div class="telemetry-card text-center group">
+            <div
+              class="font-display text-xs uppercase tracking-[0.25em] text-erm-blue mb-3"
+            >
+              Tömeg
+            </div>
+            <div
+              class="font-display font-bold text-5xl md:text-6xl text-white mb-1 leading-none"
+              data-target="220"
+              data-suffix=""
+            >
+              0
+            </div>
+            <div
+              class="font-display text-sm uppercase tracking-widest text-erm-text"
+            >
+              kg
+            </div>
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue/30"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue/30"
+            ></div>
+          </div>
+
+          <div class="telemetry-card text-center group">
+            <div
+              class="font-display text-xs uppercase tracking-[0.25em] text-erm-blue mb-3"
+            >
+              Teljesítmény
+            </div>
+            <div
+              class="font-display font-bold text-5xl md:text-6xl text-white mb-1 leading-none"
+              data-target="80"
+              data-suffix=""
+            >
+              0
+            </div>
+            <div
+              class="font-display text-sm uppercase tracking-widest text-erm-text"
+            >
+              kW
+            </div>
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue/30"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue/30"
+            ></div>
+          </div>
+
+          <div class="telemetry-card text-center group">
+            <div
+              class="font-display text-xs uppercase tracking-[0.25em] text-erm-blue mb-3"
+            >
+              0–100 km/h
+            </div>
+            <div
+              class="font-display font-bold text-5xl md:text-6xl text-white mb-1 leading-none"
+              data-target="3.5"
+              data-suffix=""
+            >
+              0
+            </div>
+            <div
+              class="font-display text-sm uppercase tracking-widest text-erm-text"
+            >
+              mp
+            </div>
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue/30"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue/30"
+            ></div>
+          </div>
+
+          <div class="telemetry-card text-center group">
+            <div
+              class="font-display text-xs uppercase tracking-[0.25em] text-erm-blue mb-3"
+            >
+              Végsebesség
+            </div>
+            <div
+              class="font-display font-bold text-5xl md:text-6xl text-white mb-1 leading-none"
+              data-target="130"
+              data-suffix=""
+            >
+              0
+            </div>
+            <div
+              class="font-display text-sm uppercase tracking-widest text-erm-text"
+            >
+              km/h
+            </div>
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue/30"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue/30"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Technical detail row -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-5 reveal-stagger">
+          <div class="telemetry-card text-center group">
+            <div
+              class="font-display text-xs uppercase tracking-[0.25em] text-erm-blue mb-3"
+            >
+              Akkumulátor
+            </div>
+            <div
+              class="font-display font-bold text-3xl md:text-4xl text-white mb-1 leading-none"
+            >
+              6.5 <span class="text-lg text-erm-text">kWh</span>
+            </div>
+            <div
+              class="font-display text-xs uppercase tracking-widest text-erm-text mt-1"
+            >
+              LiFePO₄ cella
+            </div>
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue/30"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue/30"
+            ></div>
+          </div>
+          <div class="telemetry-card text-center group">
+            <div
+              class="font-display text-xs uppercase tracking-[0.25em] text-erm-blue mb-3"
+            >
+              Hajtáslánc
+            </div>
+            <div
+              class="font-display font-bold text-3xl md:text-4xl text-white mb-1 leading-none"
+            >
+              Szénkefementes AC Motor
+            </div>
+            <div
+              class="font-display text-xs uppercase tracking-widest text-erm-text mt-1"
+            >
+              Hátsókerék-hajtás
+            </div>
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue/30"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue/30"
+            ></div>
+          </div>
+          <div class="telemetry-card text-center group">
+            <div
+              class="font-display text-xs uppercase tracking-[0.25em] text-erm-blue mb-3"
+            >
+              Telemetria
+            </div>
+            <div
+              class="font-display font-bold text-3xl md:text-4xl text-white mb-1 leading-none"
+            >
+              Real<span class="text-erm-blue">-</span>Time
+            </div>
+            <div
+              class="font-display text-xs uppercase tracking-widest text-erm-text mt-1"
+            >
+              CAN-bus adatgyűjtés
+            </div>
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue/30"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue/30"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DIAGONAL DIVIDER                                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="relative h-24 md:h-32 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-erm-gray/40 skew-y-2 origin-top-right transform scale-110"
+      ></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- CSAPATUNK (Team) – Showcase Photo + CSV Grid                -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section
+      id="csapatunk"
+      class="relative py-24 md:py-32 px-6 lg:px-16 overflow-hidden"
+    >
+      <!-- Decorative skewed shape -->
+      <div
+        class="absolute bottom-0 left-0 w-1/4 h-full bg-gradient-to-r from-erm-gray/20 to-transparent skew-x-12 transform origin-bottom-left pointer-events-none -z-10"
+      ></div>
+
+      <div class="max-w-7xl mx-auto">
+        <!-- Section header -->
+        <div class="text-center mb-12 reveal">
+          <h2
+            class="text-erm-blue font-display font-bold tracking-[0.2em] text-sm uppercase mb-4 flex items-center justify-center gap-4"
+          >
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+            Csapatunk
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+          </h2>
+          <h3
+            class="text-3xl md:text-5xl lg:text-6xl font-display font-bold uppercase leading-tight"
+          >
+            Az <span class="text-gradient-blue">emberek</span> a gép mögött
+          </h3>
+          <p
+            class="text-erm-text text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed"
+          >
+            Multidiszciplináris hallgatói csapat a Miskolci Egyetemről.<br />
+            Management, Elektronika, Gépészet, IT, HR és Jog, Marketing, Pénzügy
+            és Alumni - közös cél, egyetlen csapat.
+          </p>
+        </div>
+
+        <!-- NEW: Full Team Showcase Banner Image -->
+        <div class="mb-16 relative reveal">
+          <div
+            class="relative overflow-hidden rounded-sm border border-white/10 bg-erm-gray/40 shadow-2xl group"
+          >
+            <img
+              src="/img/team/team.png"
+              alt="Electric Racing Miskolc Teljes Csapat"
+              class="w-full max-h-[580px] object-cover object-center transition-transform duration-700 group-hover:scale-[1.015]"
+              loading="lazy"
+            />
+            <!-- Gradient Overlay with Team Title -->
+            <div
+              class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-erm-dark via-erm-dark/75 to-transparent p-6 md:p-10 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4"
+            >
+              <div>
+                <span
+                  class="inline-block px-3 py-1 bg-erm-blue text-erm-dark font-display font-bold text-xs uppercase tracking-widest -skew-x-12 mb-2"
+                >
+                  <span class="skew-x-12 block">Electric Racing Miskolc</span>
+                </span>
+                <h4
+                  class="font-display font-bold text-2xl md:text-4xl uppercase text-white tracking-wide"
+                >
+                  A <span class="text-gradient-blue">Csapat</span>
+                </h4>
+                <p class="text-erm-text text-sm md:text-base max-w-xl mt-1">
+                  Közös erővel, kitartással dolgozunk, hogy a lehető legjobb
+                  eredményeket érjük el.
+                </p>
+              </div>
+              <div class="shrink-0 flex items-center gap-3">
+                <span
+                  class="font-display text-sm uppercase tracking-widest text-erm-blue font-bold px-4 py-2 border border-erm-blue/30 bg-erm-dark/80 -skew-x-12"
+                >
+                  <span class="skew-x-12 block">2026</span>
+                </span>
+              </div>
+            </div>
+            <!-- High-tech corner telemetry brackets -->
+            <div
+              class="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-erm-blue pointer-events-none"
+            ></div>
+            <div
+              class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-erm-blue pointer-events-none"
+            ></div>
+            <div
+              class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-erm-blue pointer-events-none"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-erm-blue pointer-events-none"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Department filter tabs -->
+        <div
+          id="team-filters"
+          class="flex flex-wrap justify-center gap-2 md:gap-3 mb-12 reveal"
+        >
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Team grid (populated by JS from CSV) -->
+        <div
+          id="team-grid"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
+        >
+          <p
+            class="text-erm-text col-span-full text-center py-12 font-display uppercase tracking-widest text-sm"
+          >
+            Betöltés...
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DIAGONAL DIVIDER                                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="relative h-24 md:h-32 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-erm-gray/40 -skew-y-2 origin-top-left transform scale-110"
+      ></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- GYIK (Gyakran Ismételt Kérdések)                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section
+      id="gyik"
+      class="relative py-24 md:py-32 px-6 lg:px-16 overflow-hidden bg-erm-gray/15"
+    >
+      <div class="max-w-5xl mx-auto">
+        <!-- Section header -->
+        <div class="text-center mb-16 md:mb-20 reveal">
+          <h2
+            class="text-erm-blue font-display font-bold tracking-[0.2em] text-sm uppercase mb-4 flex items-center justify-center gap-4"
+          >
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+            GYIK
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+          </h2>
+          <h3
+            class="text-3xl md:text-5xl lg:text-6xl font-display font-bold uppercase leading-tight"
+          >
+            Gyakran Ismételt <span class="text-gradient-blue">Kérdések</span>
+          </h3>
+          <p
+            class="text-erm-text text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed"
+          >
+            Találj gyors válaszokat a leggyakrabban feltett kérdésekre a
+            csatlakozásról, időbeosztásról és lehetőségekről.
+          </p>
+        </div>
+
+        <!-- Accordion FAQ List (From old site) -->
+        <div class="space-y-4 reveal">
+          <!-- FAQ 1 -->
+          <div
+            class="accordion-item active bg-erm-gray/30 p-6 border border-white/5"
+          >
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Mennyi időt igényel a csapat tagjának lenni?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                A csapathoz való csatlakozás feltételei között nem szerepel
+                minimum időráfordítás. Ennek ellenére tapasztalat szerint a
+                betanulás ideje alatt heti 3-4 óra elengedhetetlen ahhoz, hogy
+                elsajátítsd a szükséges képességeket. A ráfordított idő azonban
+                bővülni fog azzal egyenes arányosan, hogy milyen szintű
+                feladatokat látsz el. A feladatok nagyrésze viszont otthonról is
+                végezhető – munka, órák, egyéb elfoglaltság után.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Érdemes-e első évesen csatlakozni a csapathoz?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                Egy átlagos egyetemi képzés 7 félév. Formula Student csapatban
+                kizárólag ebben az időszakban van lehetőséged részt venni. Mivel
+                ezen idő alatt te is tanuló vagy, nem várunk el semmilyen
+                szakmai tudást, csupán a tanulásra és csapatmunkára való
+                nyitottságot. Így nincs sok értelme húzni az időt és 3.-4.
+                félévben csatlakozni, hiszen nálunk mindent megtanulhatsz és még
+                több időd is marad a csapatban tevékenykedni.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  A csapatban való részvétel mellett, hogy tudom végezni a
+                  tanulmányaimat? Nem fogok emiatt csúszni?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                Röviden, nem! Mivel a csapatunk egy kis közösség, találsz
+                segítséget tanulmányaidban is, amely inkább segít, mint
+                hátráltat. Gyakorlatot végezhetsz nálunk és szakdolgozat/TDK
+                témát is találhatsz a csapatban való munkád során. Így
+                párhuzamosan tudsz dolgozni az autón és haladni a
+                tanulmányaiddal külön időráfordítás nélkül.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Gazdászként milyen feladatokat tudok ellátni és mennyire
+                  elvárt a technikai tudás?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                Ahogy egy igazi versenycsapatnak, nekünk is szükségünk van
+                gazdászokra. A csapat megfelelő működéséhez elengedhetetlen a
+                beszerzések intézése, a pénzügyek vezetése és a marketing.
+                Ezeken kívül pedig a Formula Student versenyekre különböző
+                gazdasági témájú előadásokat kell készíteni és prezentálni. A
+                technikai tudás egyáltalán nem szükséges, de érdeklődés esetén
+                lehet csatlakozni bármihez.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Milyen tudást szerezhetek a csapat tagjaként?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                A Formula Student egyik fontos feladata, hogy olyan hallgatókat
+                képezzen, akik képesek az elméleti tudást átültetni a
+                gyakorlatba, lehetőleg az aktuális és legújabb trendeket
+                követve. Ezzel olyan versenyképes tudást biztosít, amit az ipari
+                környezeten kívül csak nagyon kevés helyen szerezhetsz meg.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Tudok pénzt keresni ezzel?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                Igen! A csapat saját ösztöndíjprogramjának keretein belül a
+                tagok szorgalmuk és időráfordításukkal arányosan kaphatnak
+                ösztöndíjat minden félévben. Emellett TDK munkával vagy cikkek
+                írásával megpályázhatsz több ösztöndíjat (pl. Universitas
+                Miskolcensis, ÚNKP, Nemzeti felsőoktatási ösztöndíj), amelyek
+                havi 40–100 ezer forintot is jelenthetnek pluszban.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Kik jelentkezhetnek a csapatba?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                Bárki, aki aktív hallgatói jogviszonnyal rendelkezik a
+                felsőoktatásban. Karoktól és szakoktól függetlenül várunk minden
+                lelkes és elhivatott hallgatót!
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Hogyan tudok jelentkezni a csapathoz és mi az eljárás menete?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                Ha követed social media oldalainkat vagy weboldalunkat,
+                láthatod, hogy minden évben legalább 1 tagfelvételt tartunk,
+                amelyre online, egy Google Űrlap kitöltésével tudsz jelentkezni.
+                A felvételi időszak lezárultát követően pedig egy személyes
+                elbeszélgetésen találkozunk. Ha lemaradnál erről, de eltökélt
+                vagy, bátran vegyél fel velünk a kapcsolatot, és egyedi
+                eljárásban is van lehetőség felvételt nyerni.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 9 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Milyen kötelezettségeim vannak, ha a csapat tagja vagyok?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                A tagok kötelezettsége pozíciótól függően változik. Vannak
+                felelősségteljesebb és kevésbé felelősségteljes feladatkörök.
+                Minél magasabb pozícióba kerülsz, annál több ember vagy
+                fontosabb alkatrész függ tőled, tehát több kötelezettséged lesz.
+                A csapathoz való csatlakozás alapvetően nem jár előzetes
+                megkötésekkel, az első éved szinte egészében a tanulásról szól,
+                és mindig lesz egy mentor, aki segít.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 10 -->
+          <div class="accordion-item bg-erm-gray/30 p-6 border border-white/5">
+            <button
+              class="accordion-header w-full flex items-center justify-between text-left cursor-pointer"
+            >
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-8 h-8 flex items-center justify-center bg-erm-blue/15 text-erm-blue shrink-0"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+                <h4
+                  class="font-display font-bold text-base md:text-lg uppercase tracking-wide"
+                >
+                  Csak a vezetés érdekel, pilótát kerestek?
+                </h4>
+              </div>
+              <svg
+                class="accordion-chevron w-5 h-5 text-erm-text shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p
+                class="text-erm-text text-sm md:text-base leading-relaxed pt-4 pl-12"
+              >
+                Kizárólag pilótára nincs szükségünk. Ha csak ez az egyetlen
+                dolog, ami motivál a csatlakozásban, nem mi vagyunk a
+                megfelelőek számodra. Azonban rendszeresen szervezünk belső
+                tesztnapokat és „fun-drive” eseményeket, ahol mindenki, aki
+                munkát fektetett az autó megépítésébe, kipróbálhatja a
+                konstrukciót.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DIAGONAL DIVIDER                                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="relative h-24 md:h-32 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-erm-gray/40 skew-y-2 origin-top-right transform scale-110"
+      ></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SZPONZORAINK (Sponsors) – Tiered, loaded from JSON          -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section
+      id="szponzoraink"
+      class="relative py-24 md:py-32 px-6 lg:px-16 overflow-hidden bg-erm-gray/10"
+    >
+      <div class="max-w-7xl mx-auto">
+        <!-- Section header -->
+        <div class="text-center mb-16 md:mb-20 reveal">
+          <h2
+            class="text-erm-blue font-display font-bold tracking-[0.2em] text-sm uppercase mb-4 flex items-center justify-center gap-4"
+          >
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+            Szponzoraink
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+          </h2>
+          <h3
+            class="text-3xl md:text-5xl lg:text-6xl font-display font-bold uppercase leading-tight"
+          >
+            Partnereink &amp;
+            <span class="text-gradient-blue">Támogatóink</span>
+          </h3>
+          <p
+            class="text-erm-text text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed"
+          >
+            Köszönjük partnereinknek, hogy lehetővé teszik az álmunk
+            megvalósítását. Csatlakozz hozzájuk!
+          </p>
+        </div>
+
+        <!-- Sponsors container (populated by JS from JSON) -->
+        <div id="sponsors-container">
+          <p
+            class="text-erm-text text-center py-12 font-display uppercase tracking-widest text-sm"
+          >
+            Betöltés...
+          </p>
+        </div>
+
+        <!-- CTA for sponsors -->
+        <div class="text-center mt-12 reveal">
+          <p class="text-erm-text text-base mb-6">
+            Támogatna minket?
+          </p>
+          <p class="text-erm-text text-base mb-6">
+            Támogatóink hozzájárulása lehetővé teszi az <span class="text-white font-medium">Electric Racing Miskolc</span> számára, hogy elektromos versenyautóját magas színvonalon fejlessze és nemzetközi szinten képviselje a magyar műszaki innovációt. <span class="text-white font-medium">Partnereinknek hosszú távú együttműködést és célzott megjelenési lehetőségeket kínálunk.</span> Amennyiben vállalata nyitott a támogatásra, kérjük, vegye fel velünk a kapcsolatot.
+          </p>
+          <a
+            href="mailto:sponsor.erm@gmail.com"
+            class="btn-primary text-base py-3 px-10 inline-block no-underline"
+          >
+            <span class="skew-x-12">Kapcsolatfelvétel</span>
+          </a>
+          <a
+            href="/documents/Szponzoranyag.pdf"
+            target="_blank"
+            class="btn-primary text-base py-3 px-10 inline-block no-underline"
+          >
+            <span class="skew-x-12">Szponzorációs anyag</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DIAGONAL DIVIDER                                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="relative h-24 md:h-32 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-erm-gray/40 -skew-y-2 origin-top-left transform scale-110"
+      ></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- MŰHELYÜNK / TÉRKÉP (Google Maps Integration)                -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section
+      id="muhely"
+      class="relative py-24 md:py-32 px-6 lg:px-16 overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto">
+        <!-- Section header -->
+        <div class="text-center mb-16 md:mb-20 reveal">
+          <h2
+            class="text-erm-blue font-display font-bold tracking-[0.2em] text-sm uppercase mb-4 flex items-center justify-center gap-4"
+          >
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+            Helyszín
+            <span class="w-12 h-[2px] bg-erm-blue inline-block"></span>
+          </h2>
+          <h3
+            class="text-3xl md:text-5xl lg:text-6xl font-display font-bold uppercase leading-tight"
+          >
+            Itt Találod a <span class="text-gradient-blue">Műhelyünket</span>
+          </h3>
+          <p
+            class="text-erm-text text-base md:text-lg max-w-2xl mx-auto mt-6 leading-relaxed"
+          >
+            Itt születik meg az ERMe-01 és minden jövőbeli konstrukciónk a
+            Miskolci Egyetem campusán.
+          </p>
+        </div>
+
+        <!-- Map & Info Card Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch reveal">
+          <!-- Location Info Card -->
+          <div
+            class="bg-erm-gray/40 border border-white/10 p-8 flex flex-col justify-between relative overflow-hidden group"
+          >
+            <div class="relative z-10">
+              <span
+                class="inline-block px-3 py-1 bg-erm-blue/20 text-erm-blue border border-erm-blue/30 font-display font-bold text-xs uppercase tracking-widest -skew-x-12 mb-6"
+              >
+                <span class="skew-x-12 block">Központ &amp; Műhely</span>
+              </span>
+
+              <h4
+                class="font-display font-bold text-2xl uppercase text-white mb-4"
+              >
+                Miskolci Egyetem Campus
+              </h4>
+
+              <div class="space-y-4 text-sm text-erm-text mb-8">
+                <div class="flex items-start gap-3">
+                  <svg
+                    class="w-5 h-5 text-erm-blue shrink-0 mt-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <span
+                    >3515 Miskolc-Egyetemváros<br />Műhelyépület (Műszaki
+                    Kar)</span
+                  >
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <svg
+                    class="w-5 h-5 text-erm-blue shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                    />
+                  </svg>
+                  <span class="font-mono text-xs text-gray-300"
+                    >GPS: 48.083451, 20.766736</span
+                  >
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <svg
+                    class="w-5 h-5 text-erm-blue shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <a
+                    href="mailto:sponsor.erm@gmail.com"
+                    class="hover:text-erm-blue transition-colors break-all"
+                    >sponsor.erm@gmail.com</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="relative z-10 pt-4 border-t border-white/10">
+              <a
+                href="https://maps.google.com/maps?q=48.08345092801141,20.766736169704522"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary w-full text-center text-sm py-3 px-6 block no-underline group"
+              >
+                <span class="skew-x-12 flex items-center justify-center gap-2">
+                  Útvonaltervezés a Google Térképen
+                  <svg
+                    class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </span>
+              </a>
+            </div>
+
+            <!-- Corner Telemetry Brackets -->
+            <div
+              class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-erm-blue pointer-events-none"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-erm-blue pointer-events-none"
+            ></div>
+          </div>
+
+          <!-- Interactive Google Maps Embed -->
+          <div
+            class="lg:col-span-2 relative overflow-hidden rounded-sm border border-white/10 bg-erm-dark shadow-2xl min-h-[380px] md:min-h-[460px]"
+          >
+            <iframe
+              title="Electric Racing Miskolc Műhely Térkép"
+              src="https://maps.google.com/maps?q=48.08345092801141,20.766736169704522&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              class="w-full h-full min-h-[380px] md:min-h-[460px] border-0"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+
+            <!-- Corner telemetry accents -->
+            <div
+              class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-erm-blue pointer-events-none"
+            ></div>
+            <div
+              class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-erm-blue pointer-events-none"
+            ></div>
+            <div
+              class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-erm-blue pointer-events-none"
+            ></div>
+            <div
+              class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-erm-blue pointer-events-none"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- FOOTER                                                      -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <footer class="relative bg-erm-gray/30 border-t border-white/5">
+      <!-- Skewed top accent -->
+      <div
+        class="absolute -top-1 left-0 w-full h-1 bg-gradient-to-r from-transparent via-erm-blue to-transparent"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-16 py-16 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          <!-- Brand -->
+          <div>
+            <img
+              src="/img/logo.png"
+              alt="Electric Racing Miskolc"
+              class="w-48 mb-6"
+              loading="lazy"
+            />
+            <p class="text-erm-text text-sm leading-relaxed max-w-xs">
+              A Miskolci Egyetem Formula Student csapata. Elektromos hajtás,
+              mérnöki innováció, versenyszellem.
+            </p>
+          </div>
+
+          <!-- Quick links -->
+          <div>
+            <h4
+              class="font-display font-bold text-base uppercase tracking-widest mb-6 text-erm-blue"
+            >
+              Navigáció
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#fs-rol"
+                  class="text-erm-text text-sm hover:text-erm-blue transition-colors"
+                  >Az FS-ről</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#auto"
+                  class="text-erm-text text-sm hover:text-erm-blue transition-colors"
+                  >ERMe-01</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#csapatunk"
+                  class="text-erm-text text-sm hover:text-erm-blue transition-colors"
+                  >Csapatunk</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gyik"
+                  class="text-erm-text text-sm hover:text-erm-blue transition-colors"
+                  >GYIK</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#szponzoraink"
+                  class="text-erm-text text-sm hover:text-erm-blue transition-colors"
+                  >Szponzoraink</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#muhely"
+                  class="text-erm-text text-sm hover:text-erm-blue transition-colors"
+                  >Műhely &amp; Térkép</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact info in footer -->
+          <div>
+            <h4
+              class="font-display font-bold text-base uppercase tracking-widest mb-6 text-erm-blue"
+            >
+              Kapcsolat
+            </h4>
+            <ul class="space-y-3">
+              <li class="text-erm-text text-sm">
+                <span class="text-white">Email:</span>
+                <a
+                  href="mailto:sponsor.erm@gmail.com"
+                  class="hover:text-erm-blue transition-colors ml-1"
+                  >sponsor.erm@gmail.com</a
+                >
+              </li>
+              <li class="text-erm-text text-sm">
+                <span class="text-white">Helyszín:</span>
+                <span class="ml-1"
+                  >3515 Miskolc-Egyetemváros Műhelyépület (Műszaki Kar)</span
+                >
+              </li>
+            </ul>
+            <!-- Social icons -->
+            <div class="flex gap-4 mt-6">
+              <a
+                href="https://www.facebook.com/ermiskolc"
+                target="_blank"
+                rel="noopener"
+                class="w-10 h-10 flex items-center justify-center border border-white/10 text-erm-text hover:border-erm-blue hover:text-erm-blue transition-all -skew-x-6"
+                aria-label="Facebook"
+              >
+                <svg
+                  class="w-5 h-5 skew-x-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/ermiskolc/"
+                target="_blank"
+                rel="noopener"
+                class="w-10 h-10 flex items-center justify-center border border-white/10 text-erm-text hover:border-erm-blue hover:text-erm-blue transition-all -skew-x-6"
+                aria-label="Instagram"
+              >
+                <svg
+                  class="w-5 h-5 skew-x-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="/documents/Szponzoranyag.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 flex items-center justify-center border border-white/10 text-erm-text hover:border-erm-blue hover:text-erm-blue transition-all -skew-x-6"
+                aria-label="Szponzori anyag (PDF)"
+                title="Szponzori anyag letöltése (PDF)"
+              >
+                <svg
+                  class="w-5 h-5 skew-x-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div
+          class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-erm-text text-xs tracking-wider">
+            &copy; 2026 Electric Racing Miskolc. Minden jog fenntartva.
+          </p>
+          <p
+            class="text-erm-text/50 text-xs tracking-wider font-display uppercase"
+          >
+            Designed with <span class="text-erm-blue">⚡</span> by ERM
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="back-to-top group"
+      aria-label="Vissza a tetejére"
+      title="Vissza a tetejére"
+    >
+      <div class="skew-x-12 flex flex-col items-center justify-center">
+        <svg
+          class="w-4 h-4 text-inherit"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+            d="M5 15l7-7 7 7"
+          />
+        </svg>
+        <span
+          class="text-[0.62rem] font-display font-bold uppercase tracking-wider leading-none mt-0.5"
+          >TOP</span
+        >
+      </div>
+    </button>
+
+    <!-- JavaScript -->
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

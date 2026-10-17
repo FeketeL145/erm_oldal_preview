@@ -1,0 +1,404 @@
+{
+  "tiers": [
+    {
+      "name": "Gyémánt",
+      "id": "diamond",
+      "sponsors": [
+        {
+          "name": "Altium",
+          "logo": "/img/sponsors/diamond/altium.webp",
+          "url": "https://altium.com/"
+        },
+        {
+          "name": "Ansys",
+          "logo": "/img/sponsors/diamond/ansys.webp",
+          "url": "https://www.ansys.com/"
+        },
+        {
+          "name": "Dassault Systems",
+          "logo": "/img/sponsors/diamond/dassault_systems.webp",
+          "url": "https://www.3ds.com/"
+        },
+        {
+          "name": "Econ",
+          "logo": "/img/sponsors/diamond/econ.webp",
+          "url": "https://www.econengineering.com/hu/"
+        },
+        {
+          "name": "Miskolci Egyetem",
+          "logo": "/img/sponsors/diamond/miskolci_egyetem.webp",
+          "url": "https://www.uni-miskolc.hu/"
+        }
+      ]
+    },
+    {
+      "name": "Arany",
+      "id": "gold",
+      "sponsors": [
+        {
+          "name": "Cadence",
+          "logo": "/img/sponsors/gold/cadence.webp",
+          "url": "https://www.cadence.com/"
+        },
+        {
+          "name": "GEIK",
+          "logo": "/img/sponsors/gold/geik.webp",
+          "url": "http://gepesz.uni-miskolc.hu/index.php"
+        },
+        {
+          "name": "GTK",
+          "logo": "/img/sponsors/gold/gtk.webp",
+          "url": "https://gtk.uni-miskolc.hu"
+        },
+        {
+          "name": "MOL",
+          "logo": "/img/sponsors/gold/mol.webp",
+          "url": "https://www.molgroupchemicals.com/hu/rolunk"
+        },
+        {
+          "name": "Simulex",
+          "logo": "/img/sponsors/gold/simulex.webp",
+          "url": "https://simulex.hu/"
+        }
+      ]
+    },
+    {
+      "name": "Ezüst",
+      "id": "silver",
+      "sponsors": [
+        {
+          "name": "Bibus",
+          "logo": "/img/sponsors/silver/bibus.webp",
+          "url": "https://www.bibus.hu/"
+        },
+        {
+          "name": "Bolhoff",
+          "logo": "/img/sponsors/silver/bolhoff.webp",
+          "url": "https://www.boellhoff.com/hu-hu/"
+        },
+        {
+          "name": "Bosch",
+          "logo": "/img/sponsors/silver/bosch.webp",
+          "url": "https://www.bosch.hu/vallalatunk/a-bosch-magyarorszagon/miskolc-robert-bosch-energy-and-body-systems-kft/"
+        },
+        {
+          "name": "Euro Circuits",
+          "logo": "/img/sponsors/silver/euro_circuits.webp",
+          "url": "https://www.eurocircuits.com/"
+        },
+        {
+          "name": "Eurosolid",
+          "logo": "/img/sponsors/silver/eurosolid.webp",
+          "url": "https://eurosolid.hu/"
+        },
+        {
+          "name": "Rapid Harness",
+          "logo": "/img/sponsors/silver/rapid_harness.webp",
+          "url": "https://rapidharness.com/"
+        }
+      ]
+    },
+    {
+      "name": "Bronz",
+      "id": "bronze",
+      "sponsors": [
+        {
+          "name": "Center Tool",
+          "logo": "/img/sponsors/bronze/center_tool.webp",
+          "url": "https://www.centertool.hu/"
+        },
+        {
+          "name": "Elas",
+          "logo": "/img/sponsors/bronze/elas.webp",
+          "url": "https://elas.hu/hu/"
+        },
+        {
+          "name": "Faguru",
+          "logo": "/img/sponsors/bronze/faguru.webp",
+          "url": "https://www.maras.hu/"
+        },
+        {
+          "name": "GB",
+          "logo": "/img/sponsors/bronze/gb.webp",
+          "url": "http://www.gbtrade.hu/"
+        },
+        {
+          "name": "GNR",
+          "logo": "/img/sponsors/bronze/gnr.webp",
+          "url": "https://gnr.hu/"
+        },
+        {
+          "name": "Hungaro Rolling",
+          "logo": "/img/sponsors/bronze/hungaro_rolling.webp",
+          "url": "https://www.hungarorolling.hu/"
+        },
+        {
+          "name": "Innovoflex",
+          "logo": "/img/sponsors/bronze/innovoflex.webp",
+          "url": "https://innovoflex.com/"
+        },
+        {
+          "name": "Loctite",
+          "logo": "/img/sponsors/bronze/loctite.webp",
+          "url": "https://www.loctite.hu/"
+        },
+        {
+          "name": "Novia",
+          "logo": "/img/sponsors/bronze/novia.webp",
+          "url": "https://novia.hu/"
+        },
+        {
+          "name": "RLS",
+          "logo": "/img/sponsors/bronze/rls.webp",
+          "url": "https://www.rls.si/"
+        },
+        {
+          "name": "Teroson",
+          "logo": "/img/sponsors/bronze/teroson.webp",
+          "url": "https://www.henkel-adhesives.com/"
+        },
+        {
+          "name": "Unexmin",
+          "logo": "/img/sponsors/bronze/unexmin.webp",
+          "url": "https://unexmin-georobotics.com/"
+        },
+        {
+          "name": "Zoltek",
+          "logo": "/img/sponsors/bronze/zoltek.webp",
+          "url": "https://zoltek.com/"
+        }
+      ]
+    },
+    {
+      "name": "Partner",
+      "id": "partner",
+      "sponsors": [
+        {
+          "name": "3D Technology",
+          "logo": "/img/sponsors/partner/3d_technology.webp",
+          "url": "https://3dtechnologykft.hu/"
+        },
+        {
+          "name": "3Dconnexion",
+          "logo": "/img/sponsors/partner/3dconnexion.webp",
+          "url": "https://3dconnexion.com/hu/"
+        },
+        {
+          "name": "4Turbo",
+          "logo": "/img/sponsors/partner/4turbo.webp",
+          "url": "https://www.4turbo.pl/"
+        },
+        {
+          "name": "Adix",
+          "logo": "/img/sponsors/partner/adix.webp",
+          "url": "https://adix.hu/hu/"
+        },
+        {
+          "name": "Amada",
+          "logo": "/img/sponsors/partner/amada.webp",
+          "url": "https://amadaweldtech.eu/hu"
+        },
+        {
+          "name": "Analog Devices",
+          "logo": "/img/sponsors/partner/analog_devices.webp",
+          "url": "https://www.analog.com/en/index.html"
+        },
+        {
+          "name": "Atec",
+          "logo": "/img/sponsors/partner/atec.webp",
+          "url": "https://atec-autotechnik.com/en/"
+        },
+        {
+          "name": "Bachl",
+          "logo": "/img/sponsors/partner/bachl.webp",
+          "url": "https://bachl.hu/"
+        },
+        {
+          "name": "Banko Studio",
+          "logo": "/img/sponsors/partner/banko_studio.webp",
+          "url": "https://www.facebook.com/patrondiszkont/"
+        },
+        {
+          "name": "Bardi Auto",
+          "logo": "/img/sponsors/partner/bardi_auto.webp",
+          "url": "https://www.bardiauto.hu/webshop/"
+        },
+        {
+          "name": "Black Byte",
+          "logo": "/img/sponsors/partner/black_byte.webp",
+          "url": "https://www.blackbyte.hu/"
+        },
+        {
+          "name": "Corsa",
+          "logo": "/img/sponsors/partner/corsa.webp",
+          "url": "https://corsa-technic.com/"
+        },
+        {
+          "name": "Csermak",
+          "logo": "/img/sponsors/partner/csermak.webp",
+          "url": "https://csohajlitas.hu/"
+        },
+        {
+          "name": "Drexler",
+          "logo": "/img/sponsors/partner/drexler.webp",
+          "url": "https://www.drexler-automotive.com/"
+        },
+        {
+          "name": "E4",
+          "logo": "/img/sponsors/partner/e4.webp",
+          "url": "https://e4.hu/"
+        },
+        {
+          "name": "Easy Composites",
+          "logo": "/img/sponsors/partner/easy_composites.webp",
+          "url": "https://www.easycomposites.eu/"
+        },
+        {
+          "name": "Hirose",
+          "logo": "/img/sponsors/partner/hirose.webp",
+          "url": "https://www.hirose.com/"
+        },
+        {
+          "name": "Homoki Zár",
+          "logo": "/img/sponsors/partner/homoki_zar.webp",
+          "url": "https://homokizar.hu/"
+        },
+        {
+          "name": "Htest",
+          "logo": "/img/sponsors/partner/htest.webp",
+          "url": "https://www.htest.hu/"
+        },
+        {
+          "name": "Hungaro Gumi",
+          "logo": "/img/sponsors/partner/hungaro_gumi.webp",
+          "url": "https://hungarogumi.hu/"
+        },
+        {
+          "name": "Idealweb",
+          "logo": "/img/sponsors/partner/idealweb.webp",
+          "url": "https://idealweb.hu/"
+        },
+        {
+          "name": "Iron Plast",
+          "logo": "/img/sponsors/partner/iron_plast.webp",
+          "url": "https://ironplast.eu/"
+        },
+        {
+          "name": "Isabellenhutte",
+          "logo": "/img/sponsors/partner/isabellenhutte.webp",
+          "url": "https://www.isabellenhuette.de/en/"
+        },
+        {
+          "name": "JBC",
+          "logo": "/img/sponsors/partner/jbc.webp",
+          "url": "https://www.jbctools.com/"
+        },
+        {
+          "name": "KIFÜ",
+          "logo": "/img/sponsors/partner/kifu.webp",
+          "url": "https://kifu.gov.hu/"
+        },
+        {
+          "name": "Kiss és Társa",
+          "logo": "/img/sponsors/partner/kiss_es_tarsa.webp",
+          "url": "https://www.kissest.hu/"
+        },
+        {
+          "name": "Littelfuse",
+          "logo": "/img/sponsors/partner/littlefuse.webp",
+          "url": "https://www.littelfuse.com/"
+        },
+        {
+          "name": "Melasta",
+          "logo": "/img/sponsors/partner/melasta.webp",
+          "url": "https://www.melasta.com/"
+        },
+        {
+          "name": "Mobil Laserwelding",
+          "logo": "/img/sponsors/partner/mobil_leaserwelding.webp",
+          "url": "http://www.mobilleaserwelding.hu/"
+        },
+        {
+          "name": "Műszer Oázis",
+          "logo": "/img/sponsors/partner/muszer_oazis.webp",
+          "url": "https://muszeroazis.hu/"
+        },
+        {
+          "name": "Pickering",
+          "logo": "/img/sponsors/partner/pickering.webp",
+          "url": "https://www.pickeringrelay.com/"
+        },
+        {
+          "name": "Powerbelt",
+          "logo": "/img/sponsors/partner/powerbelt.webp",
+          "url": "https://www.powerbelt.hu/"
+        },
+        {
+          "name": "Proformance Metals",
+          "logo": "/img/sponsors/partner/proformance_metals.webp",
+          "url": "https://proformancemetals.co.uk/"
+        },
+        {
+          "name": "Racespec",
+          "logo": "/img/sponsors/partner/racespec.webp",
+          "url": "https://racespeconline.com/"
+        },
+        {
+          "name": "Schroth",
+          "logo": "/img/sponsors/partner/schroth.webp",
+          "url": "https://www.schrothracing.com/"
+        },
+        {
+          "name": "Sensata",
+          "logo": "/img/sponsors/partner/sensata.webp",
+          "url": "https://www.sensata.com/"
+        },
+        {
+          "name": "SIAD",
+          "logo": "/img/sponsors/partner/siad.webp",
+          "url": "https://www.siad.com/hu/home"
+        },
+        {
+          "name": "SR Team",
+          "logo": "/img/sponsors/partner/srteam.webp",
+          "url": "https://www.srteam.eu/"
+        },
+        {
+          "name": "Superb",
+          "logo": "/img/sponsors/partner/superb.webp",
+          "url": "https://www.super-b.com/"
+        },
+        {
+          "name": "TE Connectivity",
+          "logo": "/img/sponsors/partner/te_connectivity.webp",
+          "url": "https://www.te.com/usa-en/home.html"
+        },
+        {
+          "name": "Tomintex",
+          "logo": "/img/sponsors/partner/tomintex.webp",
+          "url": "https://www.tomintex.hu/"
+        },
+        {
+          "name": "Trelleborg",
+          "logo": "/img/sponsors/partner/trelleborg.webp",
+          "url": "https://www.trelleborg.com/en"
+        },
+        {
+          "name": "Unitek",
+          "logo": "/img/sponsors/partner/unitek.webp",
+          "url": "https://www.unitek-industrie-elektronik.de/"
+        },
+        {
+          "name": "Vector Steel",
+          "logo": "/img/sponsors/partner/vector_steel.webp",
+          "url": "https://www.vectorsteel.net/"
+        },
+        {
+          "name": "Weidmüller",
+          "logo": "/img/sponsors/partner/weidmüller.webp",
+          "url": "https://www.weidmueller.hu/hu/index.jsp"
+        }
+      ]
+    }
+  ]
+}

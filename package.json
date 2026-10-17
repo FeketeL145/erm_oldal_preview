@@ -1,0 +1,25 @@
+{
+  "name": "ermiskolc-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.30",
+    "sass": "^1.105.2",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  }
+}
